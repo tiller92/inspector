@@ -27,23 +27,30 @@ export default function Home() {
       <div className="w-full bg-slate-50 justify-between">
         <HeaderMobile/> 
       </div>
-      <main className="min-h-screen flex-col justify-center  bg-slate-50">
-       <div className="flex justify-center">
-          <div className="sm:hidden">
-            <FaHelmetSafety  size={imageWidth} />
+        <main className="
+            min-h-screen
+            flex-col 
+            justify-center 
+            bg-no-repeat 
+            bg-cover 
+            bg-center  
+            bg-[url('../../public/columbusImage.jpeg')]">
+
+          <div className="flex p-5 justify-center w-full h-10 "></div>
+          <div className="flex justify-center w-full text-4xl text-slate-50 font-sans ">
+            Central Ohio Inspections
           </div>
-          <div className="sm:hidden">
-            <CbusImageBtn/>  
-          </div>
-          <Image
-            className=" hidden sm:hidden" 
-            height={imageHeight}
-            width={imageWidth}
-            src="/alichase.jpeg"
-            alt="logo"
-          />
-        </div>
-      </main>
+          <div className="flex p-5 justify-center w-full h-10 "></div>
+          <div className="flex p-5 justify-center w-full h-10 "></div>
+          <div className="flex p-5 justify-center w-full h-10 "></div>
+          <div className="flex p-5 justify-center w-full h-10 "></div>
+          <div className="flex justify-center w-full h-40">
+
+          </div> 
+          <div className="flex justify-center w-full">
+            <button className="text-slate-50 font-sans p-2 border-blue-950 bg-blue-950 rounded-md border-2"> Schedule Now! </button>
+          </div> 
+        </main>
     </>
   );
 }

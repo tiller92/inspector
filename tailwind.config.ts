@@ -8,6 +8,9 @@ export default {
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
       },
+      backgroundImage: {
+        'cbusImage':"url('/Users/ryantiller/Documents/chase-inspector/inspector-chase/public/columbusImage.jpeg')",
+      },
     },
   },
   plugins: [],

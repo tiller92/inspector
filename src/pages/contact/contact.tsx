@@ -1,15 +1,16 @@
-import Link from "next/link";
 import { HeaderMobile }  from "../../../src/components/mobile/HeaderMobile";
 import Head from "next/head";
+import { SyntheticEvent } from 'react';
 
 
 export default function Contact() {
     
-    const formData = new FormData()
         // client side validation. Good 
         // refactor opportunity with server actions with next.js 14
-    const handleSubmit = (e)=> {
+    const handleSubmit = async (e)=> {
+      console.log(e)
       e.preventDefault()
+    // do some miner client side validation and then do the rest on the backend,
       const  rawFormData = {
             firstName: String(e.target.firstName.value), 
             lastName: String(e.target.lastName.value),
@@ -17,8 +18,14 @@ export default function Contact() {
             location: String(e.target.location.value), 
             message: String(e.target.message.value), 
         }
-      console.log(rawFormData) 
-  } 
+      const response = await fetch("/api/email",{
+            method:'POST',
+            body:JSON.stringify(rawFormData),
+          }
+        );
+      const resJSON = await response.json();
+        console.log("client",rawFormData, "server",resJSON) 
+    } 
  return (
     <>
       <Head>
@@ -88,7 +95,7 @@ export default function Contact() {
           <textarea
             id="message"
             name="message"
-            rows="4"
+            rows={4}
             className="mt-1 p-2 w-full font-sans border rounded-md"
             required
           ></textarea>

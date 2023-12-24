@@ -4,7 +4,6 @@ import { SyntheticEvent } from 'react';
 
 
 export default function Contact() {
-    
         // client side validation. Good 
         // refactor opportunity with server actions with next.js 14
     const handleSubmit = async (e)=> {
@@ -12,8 +11,7 @@ export default function Contact() {
       e.preventDefault()
     // do some miner client side validation and then do the rest on the backend,
       const  rawFormData = {
-            firstName: String(e.target.firstName.value), 
-            lastName: String(e.target.lastName.value),
+            Name: String(e.target.Name.value), 
             email: String(e.target.email.value),
             location: String(e.target.location.value), 
             message: String(e.target.message.value), 
@@ -41,26 +39,14 @@ export default function Contact() {
       <h2 className="text-2xl font-sans  mb-4">Contact Us</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label htmlFor="firstName" className="block text-sm  font-sans font-medium text-gray-600">
-            First Name
+          <label htmlFor="Name" className="block text-sm  font-sans font-medium text-gray-600">
+            Name
           </label>
           <input
             type="text"
-            id="firstName"
-            name="firstName"
+            id="Name"
+            name="Name"
             className="mt-1 p-2 w-full font-sans border rounded-md"
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="lastName" className="block text-sm font-sans ont-medium text-gray-600">
-            Last Name
-          </label>
-          <input
-            type="text"
-            id="lastName"
-            name="lastName"
-            className="mt-1 p-2 w-full border font-sans rounded-md"
             required
           />
         </div>

@@ -3,7 +3,8 @@ import nodemailer from 'nodemailer';
 import fetch from 'node-fetch';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    const body = req.body
+    const body = JSON.parse(req.body) 
+    console.log(body['message'])
   // needs to send an email and make sure no malware gets sent to chases email
     const transporter = nodemailer.createTransport({
       host: 'smtp.office365.com',
@@ -15,8 +16,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     })
     const mailOptions = {
         from: 'testinspectortest@outlook.com',
-        to: 'ryantiller6@gmail.com',
-        subject: 'teeest wooooooo',
+        to: process.env.CHASEEMAIL,
+        subject: 'Inspection lead',
         text: 'That was easy!'
       };
 

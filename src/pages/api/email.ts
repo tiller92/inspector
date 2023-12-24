@@ -18,7 +18,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         from: 'testinspectortest@outlook.com',
         to: process.env.CHASEEMAIL,
         subject: 'Inspection lead',
-        text: 'That was easy!'
+        text: body['message'], 
       };
 
     transporter.sendMail(mailOptions, function(error, info){

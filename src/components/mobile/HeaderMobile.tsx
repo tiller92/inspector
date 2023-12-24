@@ -7,7 +7,7 @@ export function HeaderMobile():JSX.Element {
   return (
     <>
       <div className="flex justify-between">
-          <a className="text-2xl m-2 font-sans"> 
+          <a href='/'  className="text-2xl m-2 font-sans"> 
               Hoobler Inspections
           </a>
           <ImMenu

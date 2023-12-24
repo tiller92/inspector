@@ -16,6 +16,8 @@ export const env = createEnv({
       ),
     NODE_ENV: z
       .enum(["development", "test", "production"])
+      .default("development"),
+  },
 
   /**
    * Specify your client-side environment variables schema here. This way you can ensure the app

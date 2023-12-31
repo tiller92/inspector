@@ -2,27 +2,32 @@ import { HeaderMobile }  from "../../../src/components/mobile/HeaderMobile";
 import Head from "next/head";
 import { SyntheticEvent } from 'react';
 
+interface RawFormData {
+  name: string;
+  email: string;
+  location: string;
+  message: string;
+}
 
 export default function Contact() {
-        // client side validation. Good 
-        // refactor opportunity with server actions with next.js 14
-    const handleSubmit = async (e)=> {
-      console.log(e)
+    const handleSubmit = async (e:SyntheticEvent)=> {
       e.preventDefault()
-    // do some miner client side validation and then do the rest on the backend,
-      const  rawFormData = {
-            Name: String(e.target.Name.value), 
-            email: String(e.target.email.value),
-            location: String(e.target.location.value), 
-            message: String(e.target.message.value), 
+      const rawFormData: RawFormData = {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+            name: (e.target.name.value) as string, 
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+            email: (e.target.email.value) as string,
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+            location: (e.target.location.value) as string, 
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+            message: (e.target.message.value) as string, 
         }
-      const response = await fetch("/api/email",{
+
+      const response: Response = await fetch("/api/email",{
             method:'POST',
             body:JSON.stringify(rawFormData),
           }
         );
-      const resJSON = await response.json();
-        console.log("client",rawFormData, "server",resJSON) 
     } 
  return (
     <>
@@ -39,13 +44,13 @@ export default function Contact() {
       <h2 className="text-2xl font-sans  mb-4">Contact Us</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label htmlFor="Name" className="block text-sm  font-sans font-medium text-gray-600">
+          <label htmlFor="name" className="block text-sm  font-sans font-medium text-gray-600">
             Name
           </label>
           <input
             type="text"
-            id="Name"
-            name="Name"
+            id="name"
+            name="name"
             className="mt-1 p-2 w-full font-sans border rounded-md"
             required
           />

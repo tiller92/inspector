@@ -26,15 +26,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         subject: 'Inspection lead',
         text: data.message, 
       };
-    transporter.sendMail(mailOptions).then((info) => {
-      console.log('Email sent:', info.response);
-      res.status(200).json({sent: info.response}); 
-      })
-    .catch((error) => {
-      console.error(error);
-      res.status(304).json({error: 'error' });
-      });
-  res.status(200).json({text: data}); 
+  try{
+    transporter.sendMail(mailOptions).then((info)=> {console.log(info)}).catch((error)=> {console.log(error)})
+    res.status(200).json({text: data}); 
+  }catch(e){
+    console.log(e)
+    res.status(304).json({error: e}); 
+  }
 }
 
 

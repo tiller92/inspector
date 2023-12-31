@@ -29,9 +29,9 @@ export default function Contact() {
           }
         );
       if (response.status === 200){
-          window.location.reload() 
+      // put some type of toast notifitaion here  
+        console.log(response)
         }else{
-          //this should alert the user something did not work
           console.log('didnt email shit')
         }
       console.log(response.status)

@@ -28,6 +28,13 @@ export default function Contact() {
             body:JSON.stringify(rawFormData),
           }
         );
+      if (response.status === 200){
+          window.location.reload() 
+        }else{
+          //this should alert the user something did not work
+          console.log('didnt email shit')
+        }
+      console.log(response.status)
     } 
  return (
     <>

@@ -19,23 +19,23 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         pass:  process.env.PASSWORD,
         },
       })
-    console.log(data)
+    console.log(data,'server')
     const mailOptions = {
         from: 'testinspectortest@outlook.com',
         to: process.env.CHASEEMAIL,
         subject: 'Inspection lead',
         text: data.message, 
       };
-
     transporter.sendMail(mailOptions).then((info) => {
       console.log('Email sent:', info.response);
+      res.status(200).json({sent: info.response}); 
       })
     .catch((error) => {
       console.error(error);
+      res.status(304).json({error: 'error' });
       });
   res.status(200).json({text: data}); 
 }
-
 
 
 

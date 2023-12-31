@@ -27,7 +27,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         text: data.message, 
       };
   try{
-    transporter.sendMail(mailOptions).then((info)=> {console.log(info)}).catch((error)=> {console.log(error)})
+    transporter.sendMail(mailOptions)
+      .then((info)=> {console.log(info)})
+      .catch((error)=> {
+        console.log(error)
+        throw error
+    })
     res.status(200).json({text: data}); 
   }catch(e){
     console.log(e)

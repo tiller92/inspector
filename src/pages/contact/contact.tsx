@@ -9,6 +9,7 @@ interface RawFormData {
   message: string;
 }
 
+
 export default function Contact() {
     const handleSubmit = async (e:SyntheticEvent)=> {
       e.preventDefault()
@@ -29,7 +30,6 @@ export default function Contact() {
           }
         );
       if (response.status === 200){
-      // put some type of toast notifitaion here  
         console.log(response)
         }else{
           console.log('didnt email shit')
@@ -99,7 +99,7 @@ export default function Contact() {
           ></textarea>
         </div>
         <div className="mt-4">
-          <button
+          <button  
             type="submit"
             className="px-4 py-2 bg-blue-500  font-sans text-white rounded-md hover:bg-blue-600"
           >
